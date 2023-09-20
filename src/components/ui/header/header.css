@@ -1,3 +1,71 @@
 header{
-    display: flex;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 95;
+    width: 100%;
+    background-color: var(--notfound_light);
+    border-radius: 5rem;
+}
+
+.shorpe-logo{
+    width: 9rem;
+    height: 3rem;
+}
+.header-container{
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    padding: 0.5rem;
+}
+.header-sub-container1{
+    display: flex;    
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-left: 2rem;
+}
+.header-sub-container2{
+    display: flex; 
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    margin-right: 2rem;
+}
+
+.nav-btn{
+    width: fit-content;
+    text-decoration: none;
+    color: var(--defaulttext);
+    font-weight: 300;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.nav-btn:hover{
+    background-color: var(--defaultfocus);
+}
+
+.logout{
+    border: 1px solid var(--btnfill);
+    display: inline-flex;
+}
+
+.toggle{
+    display: none;
+}
+
+.nav-container{  
+    display: inline-flex;
+    align-items: center;
+}
+
+@media(max-width:768px){
+    .toggle{
+        display: block;
+    }
+    .nav-container{
+        display: none;    
+    }
 }

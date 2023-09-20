@@ -1,9 +1,27 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color-scheme: light dark;
+
   /* color */
-  --body_background: white;
+  --body_background: rgb(240, 245, 255);
   --body_color: black;
+
+  --logo_color1:#78c4ed;
+  --logo_color2:#d6d2d2;
+
+  --notfound_fill:#262626;
+  --notfound_light:rgb(255, 255, 255);
+
+  --defaulttext:#282c34;
+  --defaultfocus:rgb(240, 245, 255);
+
+  --defaultbg_color:#fff;
+  --lightbg_color:rgb(245 246 247);
+  --btnfill:#296d90;
+  --btnborder:#fff;
+  --boxshadow:rgb(0 0 0 / 15%);
+  --bgalternative:#515151;
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,6 +33,22 @@
 [data-theme='dark'] {
   --body_background: #282c34;
   --body_color: white;
+
+  --notfound_fill:#fff;
+  --notfound_light:#262626;
+
+  --logo_color1:#0c75b1;
+  --logo_color2:#d6d2d2;
+
+  --defaulttext:#ffff;
+  --defaultfocus:rgba(10, 10, 10, 0.196);
+
+  --defaultbg_color:#fff;
+  --lightbg_color:rgb(245 246 247);
+  --btnfill:#032132;
+  --btnborder:#fff;
+  --boxshadow:rgba(255, 255, 255, 0.15);
+  --bgalternative:#515151;
 }
 
 * {
@@ -25,7 +59,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--backgroundColorWhite);
-  color: var(--darkGrey);
+  background-color: var(--body_background);
+  color: var(--body_color);
 }
 
