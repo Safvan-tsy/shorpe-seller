@@ -8,21 +8,28 @@ const Header = () => {
   const [isNavVisible, setIsNavVisible] = useState(true)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
 
-  const handleMediaQueryChange = mediaQuery =>{
-    if(mediaQuery.matches){
+  const handleMediaQueryChange = mediaQuery => {
+    if (mediaQuery.matches) {
       setIsSmallScreen(true)
-    }else{
+    } else {
       setIsSmallScreen(false)
     }
   }
 
-  useEffect(()=>{
-   
-  },[])
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)")
+    mediaQuery.addEventListener("change", handleMediaQueryChange)
+    handleMediaQueryChange(mediaQuery)
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange)
+    }
+  }, [])
 
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible)
   }
+
   return (
     <header>
       <div className="header-container">
@@ -32,20 +39,29 @@ const Header = () => {
           </a>
         </div>
         <div className="header-sub-container2">
-          {( !isSmallScreen || isNavVisible) &&
+          {!isSmallScreen || isNavVisible ? (
             <div className="nav-container">
               <nav className="nav">
                 <a href="/" className="nav-btn">Dashboard</a>
                 <a href="/products" className="nav-btn">Products</a>
                 <a href="/orders" className="nav-btn">Orders</a>
-                <a href="/logout" className="nav-btn logout">Logout </a>
+                <a href="/logout" className="nav-btn logout">Logout</a>
               </nav>
               <DarkMode />
             </div>
-          }
-          <div className="toggle" onClick={toggleNav}>
-            <TiThListOutline />
-          </div>
+          ) : (
+            <div className="toggle" onClick={toggleNav}>
+              <TiThListOutline />
+              {isNavVisible && (
+                <div className="dropdown-nav">
+                  <a href="/" className="nav-btn">Dashboard</a>
+                  <a href="/products" className="nav-btn">Products</a>
+                  <a href="/orders" className="nav-btn">Orders</a>
+                  <a href="/logout" className="nav-btn logout">Logout</a>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </header>
