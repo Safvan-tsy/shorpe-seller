@@ -1,4 +1,4 @@
-header{
+header {
     margin-top: 1rem;
     position: relative;
     z-index: 95;
@@ -8,32 +8,29 @@ header{
     box-shadow: 0 0.5rem 1rem var(--boxshadow);
 }
 
-.shorpe-logo{
+.shorpe-logo {
     width: 9rem;
     height: 3rem;
 }
-.header-container{
-    display: grid;
-    grid-template-columns: 25% 1fr;
-    padding: 0.5rem;
-}
-.header-sub-container1{
-    display: flex;    
-    justify-content: flex-start;
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-content: center;
+}
+
+.header-sub-container1 {
+    align-self: center;
     margin-left: 2rem;
 }
-.header-sub-container2{
-    display: flex; 
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: center;
+
+.header-sub-container2 {
+    align-self: center;
     margin-right: 2rem;
 }
 
-.nav-btn{
+.nav-btn {
     width: fit-content;
     text-decoration: none;
     color: var(--defaulttext);
@@ -44,58 +41,76 @@ header{
     margin-right: 1rem;
 }
 
-.nav-btn:hover{
+.nav-btn:hover {
     background-color: var(--defaultfocus);
 }
 
-.logout{
+.logout {
     border: 1px solid var(--btnfill);
     display: inline-flex;
 }
 
-.toggle{
+.toggle {
     display: none;
 }
 
-.nav-container{  
+.nav-container {
     display: inline-flex;
     align-items: center;
 }
 
-.dropdown-nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--notfound_light);
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.nav__items {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 10%;
+    align-items: center;
+    z-index: 93;
+    top: 5rem;
+    background: var(--notfound_light);
+    width: 80%;
+    opacity: 0; /* Set initial opacity to 0 */
+    visibility: hidden; /* Hide the element initially */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Add transition properties */
+}
+
+/* Display the mobile navigation when it's open */
+.mobile-nav.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav__items {
+    list-style: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    z-index: 10;
-    padding: 1rem 0;
-  }
-  
-  .dropdown-nav a {
-    color: var(--defaulttext);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    font-weight: 300;
-    font-size: 1.2rem;
-    border-radius: 1rem;
-    margin: 0.5rem;
-  }
-  
-  .dropdown-nav a:hover {
-    background-color: var(--defaultfocus);
-  }
+    padding-inline-start: 0;
+}
 
-@media(max-width:768px){
-    .toggle{
+.mobile-nav__items li {
+    padding: 0.5rem;
+}
+
+@media(max-width:768px) {
+    .toggle {
         display: block;
+        border-radius: 0.6rem;
+        border: 1px solid var(--btnfill);
+        padding: 0.5rem;
+        box-shadow: 0 0.5rem 1rem var(--boxshadow);
     }
-    .nav-container{
-        display: none;    
+    .toggle :focus{
+        background-color: var(--defaultfocus);
+    }
+
+    .nav-container {
+        display: none;
     }
 }
