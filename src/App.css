@@ -1,12 +1,19 @@
-.main-container {
-    border-top: 0.5rem solid var(--defaultfocus);
-    border-bottom: 0.5rem solid var(--defaultfocus);
-    margin-top: 5rem;
-}
-
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
 
 .outlet-container {
     max-width: 100%;
     padding: 1rem;
     margin: 1rem;
+}
+
+main{
+    min-height: 80vh;
 }
