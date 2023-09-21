@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import DarkMode from "../DarkMode/DarkMode"
 import logo from '../../../assets/logo.png'
 import './header.css'
@@ -6,28 +6,12 @@ import { TiThListOutline } from 'react-icons/ti'
 
 const Header = () => {
   const [isNavVisible, setIsNavVisible] = useState(true)
-  const [isSmallScreen, setIsSmallScreen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleMediaQueryChange = mediaQuery => {
-    if (mediaQuery.matches) {
-      setIsSmallScreen(true)
-    } else {
-      setIsSmallScreen(false)
-    }
-  }
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 768px)")
-    mediaQuery.addEventListener("change", handleMediaQueryChange)
-    handleMediaQueryChange(mediaQuery)
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange)
-    }
-  }, [])
 
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible)
+    setIsOpen(!isOpen);
   }
 
   return (
@@ -39,29 +23,34 @@ const Header = () => {
           </a>
         </div>
         <div className="header-sub-container2">
-          {!isSmallScreen || isNavVisible ? (
+          {isNavVisible && 
             <div className="nav-container">
               <nav className="nav">
-                <a href="/" className="nav-btn">Dashboard</a>
-                <a href="/products" className="nav-btn">Products</a>
-                <a href="/orders" className="nav-btn">Orders</a>
-                <a href="/logout" className="nav-btn logout">Logout</a>
+                <ul className="nav__items">
+                <li><a href="/" className="nav-btn">Dashboard</a></li>
+                <li><a href="/products" className="nav-btn">Products</a></li>
+                <li><a href="/orders" className="nav-btn">Orders</a></li>
+                <li><a href="/logout" className="nav-btn logout">Logout</a></li>
+                </ul>
               </nav>
               <DarkMode />
             </div>
-          ) : (
+            }
             <div className="toggle" onClick={toggleNav}>
               <TiThListOutline />
-              {isNavVisible && (
-                <div className="dropdown-nav">
-                  <a href="/" className="nav-btn">Dashboard</a>
-                  <a href="/products" className="nav-btn">Products</a>
-                  <a href="/orders" className="nav-btn">Orders</a>
-                  <a href="/logout" className="nav-btn logout">Logout</a>
-                </div>
-              )}
             </div>
-          )}
+            {!isNavVisible && 
+            <nav className={`mobile-nav ${isOpen ? 'open' : ''}`}>
+                <ul className="mobile-nav__items">
+                <li><a href="/" className="nav-btn">Dashboard</a></li>
+                <li><a href="/products" className="nav-btn">Products</a></li>
+                <li><a href="/orders" className="nav-btn">Orders</a></li>
+                <li><a href="/logout" className="nav-btn logout">Logout</a></li>
+                <li><DarkMode /></li>
+                </ul>
+             </nav>
+             }
+          
         </div>
       </div>
     </header>
