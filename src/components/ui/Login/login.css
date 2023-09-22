@@ -1,0 +1,136 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    background-color: var(--notfound_light);
+    width: fit-content;
+    padding: 2rem;
+    box-shadow: 0 0.5rem 1rem var(--boxshadow);
+    border-radius: 1rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 0.4em;
+    background-color: var(--body_background);
+    border-radius: 25px;
+    transition: .4s ease-in-out;
+}
+
+.form:hover {
+    transform: scale(1.05);
+    border: 1px solid var(--logo_color1);
+}
+
+#heading {
+    text-align: center;
+    margin: 2em;
+    color: var(--defaulttext);
+    font-size: 1.2em;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 25px;
+    padding: 0.6em;
+    border: none;
+    outline: none;
+    color: var(--defaulttext);
+    background-color: var(--notfound_light);
+    box-shadow: inset 2px 5px 10px rgb(5 5 5 / 19%);
+    ;
+}
+
+.input-icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: var(--defaulttext);
+}
+
+.input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: var(--defaulttext);
+}
+
+.form .btn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 2em 0 2em 0;
+}
+
+
+button {
+    background: var(--logo_color1);
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    font-weight: 900;
+    font-size: 18px;
+    border: 3px solid var(--defaultbg_color);
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+}
+
+button:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em var(--boxshadow);
+    cursor: pointer;
+}
+
+button:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
+}
+
+/* Mobile Devices */
+@media (max-width: 767px) {
+    .form-container {
+        padding: 0.9rem;
+    }
+    .form:hover {
+        border: none;
+    }
+}
+
+/* Portrait orientation tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .form {
+        width: 25rem;
+    }
+}
+
+/* Landscape orientation tablets */
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .form {
+        width: 26rem;
+    }
+}
+
+/* Standard laptop screens */
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .form {
+        width: 30rem;
+    }
+    .form-container {
+        padding: 2.5rem;
+    }
+}
+
+/* Larger laptop screens and desktops */
+@media (min-width: 1367px) {
+    .form {
+        width: 35rem;
+    }
+    .form-container {
+        padding: 3rem;
+    }
+}
