@@ -1,0 +1,26 @@
+.inputBox {
+    position: relative;
+  }
+  
+  .inputBox p {
+    padding: 15px 20px;
+    outline: none;
+    background: transparent;
+    border-radius: 5px;
+    color: var(--defaulttext);
+    border: 1px solid var(--defaulttext);
+    font-size: 1em;
+  }
+  
+  .inputBox span {
+    position: absolute;
+    left: 0;
+    font-size: 0.7em;
+    transform: translateX(14px) translateY(-7.5px);
+    padding: 0 6px 1px 5px;
+    border-radius: 2px;
+    background: var(--notfound_light);
+    letter-spacing: 1px;
+    border: 1px solid var(--defaulttext);
+    color: var(--defaulttext);
+  }
