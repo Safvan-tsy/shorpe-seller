@@ -1,0 +1,80 @@
+.inputBox {
+    position: relative;
+    padding: 1rem;
+
+  }
+  
+  .inputBox p {
+    margin: 0 !important;
+    padding: 15px 20px;
+    outline: none;
+    background: transparent;
+    border-radius: 5px;
+    color: var(--defaulttext);
+    border: 1px solid var(--defaulttext);
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .inputBox span {
+    position: absolute;
+    left: 0;
+    font-size: 0.7em;
+    transform: translateX(14px) translateY(-7.5px);
+    padding: 0 6px 1px 5px;
+    border-radius: 2px;
+    background: var(--notfound_light);
+    letter-spacing: 1px;
+    border: 1px solid var(--defaulttext);
+    color: var(--defaulttext);
+  }
+
+
+/* Mobile Devices */
+@media (max-width: 767px) {
+  .inputBox{
+    max-width: 288px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   }
+   .inputBox span {
+    font-size: 0.5em;
+    padding: 0;
+  }
+  .inputBox p {
+    font-size: 0.8em;
+  }
+  
+}
+
+  /* Small Mobile Devices */
+
+  @media (max-width: 374px) {
+    .inputBox{
+     max-width: 200px;
+    }
+   }
+
+@media (max-width: 420px) {
+ .inputBox{
+  max-width: 232px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ }
+}
+
+/* Portrait orientation tablets */
+@media (min-width: 768px) and (max-width: 1023px) {}
+
+/* Landscape orientation tablets */
+@media (min-width: 1024px) and (max-width: 1366px) {}
+
+/* Standard laptop screens */
+@media (min-width: 1024px) and (max-width: 1366px) {}
+
+/* Larger laptop screens and desktops */
+@media (min-width: 1367px) {}
