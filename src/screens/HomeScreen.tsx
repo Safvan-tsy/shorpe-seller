@@ -15,6 +15,7 @@ const HomeScreen = () => {
             <Cards />
           </div>
           <div className='dashboard-feedbacks'>
+            <h3>Feedbacks</h3>
             <Feedback />
             <Feedback />
           </div>
@@ -24,6 +25,7 @@ const HomeScreen = () => {
             <Chart />
           </div>
           <div className='dashboard-products'>
+            <h3>Top Products</h3>
             <Products />
             <Products />
           </div>

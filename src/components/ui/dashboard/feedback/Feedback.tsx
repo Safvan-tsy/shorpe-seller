@@ -4,7 +4,7 @@ const Feedback = () => {
   return (
     <div className="inputBox">
       <span>Customer name :</span>
-      <p>Feedback Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+      <p>Feedback Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
     </div>
   )
 }

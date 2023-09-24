@@ -2,7 +2,7 @@ import './product.css'
 
 const Products = () => {
   return (
-    <div className="main">
+    <div className="product-main">
       <div className="product">
         <div className="item">
           <p className="name">Airpods Wireless Bluetooth Headphones</p>
