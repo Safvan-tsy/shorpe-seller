@@ -3,17 +3,33 @@ import DarkMode from "../DarkMode/DarkMode"
 import logo from '../../../assets/logo.png'
 import './header.css'
 import { TiThListOutline } from 'react-icons/ti'
+import { useLogoutMutation } from "../../../redux/slices/sellersApiSlice"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { logout } from "../../../redux/slices/authSlice"
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   const [isNavVisible, setIsNavVisible] = useState(true)
   const [isOpen, setIsOpen] = useState(false);
-
+  const [logoutApiCall] = useLogoutMutation();
 
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible)
     setIsOpen(!isOpen);
   }
 
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate('/login');
+    } catch (error) {
+      console.log(error);
+    }
+  }; 
   return (
     <header>
       <div className="header-container">
@@ -30,7 +46,7 @@ const Header = () => {
                 <li><a href="/" className="nav-btn">Dashboard</a></li>
                 <li><a href="/products" className="nav-btn">Products</a></li>
                 <li><a href="/orders" className="nav-btn">Orders</a></li>
-                <li><a href="/logout" className="nav-btn logout">Logout</a></li>
+                <li><button className="nav-btn logout" onClick={logoutHandler}>Logout</button></li>
                 </ul>
               </nav>
               <DarkMode />
@@ -45,7 +61,7 @@ const Header = () => {
                 <li><a href="/" className="nav-btn">Dashboard</a></li>
                 <li><a href="/products" className="nav-btn">Products</a></li>
                 <li><a href="/orders" className="nav-btn">Orders</a></li>
-                <li><a href="/logout" className="nav-btn logout">Logout</a></li>
+                <li><button className="nav-btn logout" onClick={logoutHandler}>Logout</button></li>
                 <li><DarkMode /></li>
                 </ul>
              </nav>
