@@ -1,12 +1,3 @@
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-#notfound {
-  position: relative;
-  height: 100vh;
-}
 
 #notfound .notfound {
   position: absolute;

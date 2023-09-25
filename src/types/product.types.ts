@@ -1,4 +1,4 @@
-import { User } from "./user.types";
+import { User } from "./seller.types";
 
 export interface ProductType {
     _id:string;
