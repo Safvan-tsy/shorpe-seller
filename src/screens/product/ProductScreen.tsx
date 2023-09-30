@@ -1,7 +1,10 @@
+import ProductView from "../../components/products/product-form/ProductView"
 
 const ProductScreen = () => {
   return (
-    <div>ProductScreen</div>
+    <div className="container">
+      <ProductView />
+    </div>
   )
 }
 

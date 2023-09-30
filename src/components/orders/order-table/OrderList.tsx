@@ -1,35 +1,32 @@
-import './productlist.css'
+import './orderlist.css'
 import { Pagination } from '@mui/material'
 import { FiEdit } from 'react-icons/fi'
 import { LuView } from 'react-icons/lu'
 import { Link } from 'react-router-dom'
 
-const ProductList = () => {
+const OrderList = () => {
   return (
-    <div className='product-list-component'>
-      <Link to='/products/add'>
-        <button className='icon-btn'> Add Product <FiEdit /></button>
-      </Link>
+    <div className='order-list-component'>
       <table>
-        <caption><h3>Products List</h3></caption>
+        <caption><h3>Orders List</h3></caption>
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
+            <th scope="col">Order Id</th>
+            <th scope="col">Total Price</th>
             <th scope="col">Status</th>
             <th scope='col'></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td data-label="Name">Airpods Wireless Bluetooth Headphones</td>
-            <td data-label="Price">₹ 89.99</td>
-            <td data-label="Status">Listed</td>
+            <td data-label="Order Id">5f5b74f786b194001c48f35a</td>
+            <td data-label="Toatl Price">₹ 899</td>
+            <td data-label="Status">Pending</td>
             <td>
-              <Link to='/products/edit/:id'>
+              <Link to='/orders/edit/:id'>
                 <button className='icon-btn'><FiEdit /></button>
               </Link>
-              <Link to='/products/view/:id'>
+              <Link to='/orders/view/:id'>
                 <button className='icon-btn'><LuView /></button>
               </Link>
             </td>
@@ -41,4 +38,4 @@ const ProductList = () => {
   )
 }
 
-export default ProductList
+export default OrderList

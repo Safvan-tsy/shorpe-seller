@@ -2,11 +2,6 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   /* padding: 0.3rem;
-   border-radius: 0.5rem;
-   box-shadow: 0 0.5rem 1rem var(--boxshadow); 
-   
-  background-color: var(--body_background);*/
  }
 
  caption h3 {
@@ -15,15 +10,15 @@
  }
 
  .icon-btn {
-  background: var(--logo_color1);
-  font-family: inherit;
-  padding: 0.5em 0.5em;
-  font-weight: 900;
-  font-size: 1rem;
-  border: 3px solid var(--defaultbg_color);
-  border-radius: 1em;
-  box-shadow: 0.1em 0.1em;
-}
+   background: var(--logo_color1);
+   font-family: inherit;
+   padding: 0.5em 0.5em;
+   font-weight: 900;
+   font-size: 1rem;
+   border: 3px solid var(--defaultbg_color);
+   border-radius: 1em;
+   box-shadow: 0.1em 0.1em;
+ }
 
  table {
    border: 1px solid #ccc;
@@ -57,17 +52,17 @@
    text-transform: uppercase;
  }
 
- .pagination-container{
-  margin: 0.3rem;
+ .pagination-container {
+   margin: 0.3rem;
  }
 
- .pagination-container button{
-  background: var(--logo_color1);
-  font-family: inherit;
-  font-weight: 300;
-  font-size: 1rem;
-  border-radius: 1em;
-  box-shadow: 0.1em 0.1em;
+ .pagination-container button {
+   background: var(--logo_color1);
+   font-family: inherit;
+   font-weight: 300;
+   font-size: 1rem;
+   border-radius: 1em;
+   box-shadow: 0.1em 0.1em;
  }
 
  @media screen and (max-width: 600px) {

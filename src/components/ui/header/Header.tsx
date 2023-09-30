@@ -34,9 +34,9 @@ const Header = () => {
     <header>
       <div className="header-container">
         <div className="header-sub-container1">
-          <a href="/">
+          <Link to='/'>
             <img src={logo} alt="Logo" className='shorpe-logo' />
-          </a>
+          </Link>
         </div>
         <div className="header-sub-container2">
           {isNavVisible &&
@@ -70,21 +70,21 @@ const Header = () => {
           {!isNavVisible &&
             <nav className={`mobile-nav ${isOpen ? 'open' : ''}`}>
               <ul className="mobile-nav__items">
-              <li>
-                    <Link to='/' className="nav-btn">
-                      Dashboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to='/products' className="nav-btn">
-                      Products
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to='/orders' className="nav-btn">
-                      Orders
-                    </Link>
-                  </li>
+                <li>
+                  <Link to='/' className="nav-btn">
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <Link to='/products' className="nav-btn">
+                    Products
+                  </Link>
+                </li>
+                <li>
+                  <Link to='/orders' className="nav-btn">
+                    Orders
+                  </Link>
+                </li>
                 <li><button className="nav-btn logout" onClick={logoutHandler}>Logout</button></li>
                 <li><DarkMode /></li>
               </ul>

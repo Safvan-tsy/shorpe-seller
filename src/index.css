@@ -82,3 +82,51 @@ body {
   scrollbar-color: #888 #fff; 
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  max-width: 50rem;
+  background-color: var(--notfound_light);
+  padding: 1rem;
+  box-shadow: 0 0.5rem 1rem var(--boxshadow);
+  overflow-x:auto;
+  border-radius: 1rem;
+}
+
+
+/* Mobile Devices */
+@media (max-width: 767px) {
+
+}
+
+/* small Mobile Devices */
+@media (max-width: 370px) {
+  .container {
+      max-width: 14rem;
+
+  }
+}
+
+/* Portrait orientation tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+      width: 41rem;
+  }
+}
+
+/* Landscape orientation tablets */
+@media (min-width: 1024px) and (max-width: 1366px) {}
+
+/* Standard laptop screens */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .container {
+      width: 70rem;
+  }
+}
+
+/* Larger laptop screens and desktops */
+@media (min-width: 1367px) {
+  .container {
+      min-width: 78rem;
+  }
+}
