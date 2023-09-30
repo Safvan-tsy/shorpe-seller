@@ -68,7 +68,7 @@ const LoginForm = () => {
                 <div className="btn">
                     {
                     isLoading ? <Loader/> 
-                    : <button type='submit'>Submit</button>
+                    : <button type='submit' className='btn'>Submit</button>
                     }
                 </div>
             </form>

@@ -1,7 +1,12 @@
+import ProductList from "../../components/products/productTable/ProductList"
+import './products-shared.css'
 
 const ProductListScreen = () => {
+
   return (
-    <div>ProductListScreen</div>
+    <div className="product-list-container">
+       <ProductList/>
+    </div>
   )
 }
 
