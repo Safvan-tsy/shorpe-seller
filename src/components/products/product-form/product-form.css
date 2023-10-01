@@ -6,7 +6,7 @@
 }
 
 .product-form {
-    display: flex;    
+    display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
@@ -36,30 +36,31 @@
 }
 
 .product-form-field label,
-.product-form-input-field label{
+.product-form-input-field label {
     color: var(--label_color);
 }
 
-.product-form-input-field textarea{
+.product-form-input-field textarea {
     color: var(--defaulttext);
 }
 
-.form-input{
-    display: flex;    
+.form-input {
+    display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.description textarea{
+.description textarea {
     height: 4rem !important;
 }
 
-.img-list{
+.img-list {
     padding: 0.3rem;
     border-radius: 0.3rem;
     border: 1px solid var(--img_list_border);
-  }
+}
+
 /* image upload */
 .upload-input-div {
     width: auto;
@@ -70,21 +71,70 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-  }
-  
-  .upload-icon {
+}
+
+.upload-icon {
     font-size: 2rem;
     cursor: pointer;
     padding: 0.5rem;
-  }
-  
-  .upload-input {
+}
+
+.upload-input {
     position: absolute;
     opacity: 0;
     width: 100%;
     height: 100%;
-    cursor: pointer ;
-  }
+    cursor: pointer;
+}
 
 
-  
+/* Mobile Devices */
+@media (max-width: 767px) {
+    .product-form-field {
+        width: 18rem;
+    }
+
+    .product-form-field .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
+        padding: 1px;
+    }
+}
+
+/* small Mobile Devices */
+@media (max-width: 420px) {
+    .product-form-field {
+        width: 14rem;
+    }
+
+    .product-form-field label,
+    .product-form-field span,
+    .product-form-input-field label {
+        font-size: 0.9rem;
+        margin: 0;
+    }
+}
+
+@media (max-width: 370px) {
+    .product-form-field {
+        width: 11rem;
+    }
+}
+
+/* Portrait orientation tablets */
+@media (min-width: 768px) and (max-width: 1023px) {}
+
+/* Landscape orientation tablets */
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .product-form-field {
+        width: 22rem;
+    }
+
+    .product-form-field .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
+        padding: 1px;
+    }
+}
+
+/* Standard laptop screens */
+@media (min-width: 1024px) and (max-width: 1366px) {}
+
+/* Larger laptop screens and desktops */
+@media (min-width: 1367px) {}
