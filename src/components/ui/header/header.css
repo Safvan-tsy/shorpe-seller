@@ -39,6 +39,7 @@ header {
     border-radius: 1rem;
     padding: 0.5rem;
     margin-right: 1rem;
+    background-color: var(--notfound_light);
 }
 
 .nav-btn:hover {

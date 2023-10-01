@@ -1,0 +1,140 @@
+.product-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--body_background);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.product-form-field {
+    display: flex;
+    width: 30rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 0.4em;
+    border: none;
+    outline: none;
+    color: var(--defaulttext);
+}
+
+.product-form-input-field {
+    border: none;
+    outline: none;
+    width: 100%;
+    color: var(--defaulttext);
+}
+
+.product-form-field label,
+.product-form-input-field label {
+    color: var(--label_color);
+}
+
+.product-form-input-field textarea {
+    color: var(--defaulttext);
+}
+
+.form-input {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.description textarea {
+    height: 4rem !important;
+}
+
+.img-list {
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    border: 1px solid var(--img_list_border);
+}
+
+/* image upload */
+.upload-input-div {
+    width: auto;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid var(--label_color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.upload-icon {
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.upload-input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+/* Mobile Devices */
+@media (max-width: 767px) {
+    .product-form-field {
+        width: 18rem;
+    }
+
+    .product-form-field .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
+        padding: 1px;
+    }
+}
+
+/* small Mobile Devices */
+@media (max-width: 420px) {
+    .product-form-field {
+        width: 14rem;
+    }
+
+    .product-form-field label,
+    .product-form-field span,
+    .product-form-input-field label {
+        font-size: 0.9rem;
+        margin: 0;
+    }
+}
+
+@media (max-width: 370px) {
+    .product-form-field {
+        width: 11rem;
+    }
+}
+
+/* Portrait orientation tablets */
+@media (min-width: 768px) and (max-width: 1023px) {}
+
+/* Landscape orientation tablets */
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .product-form-field {
+        width: 22rem;
+    }
+
+    .product-form-field .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
+        padding: 1px;
+    }
+}
+
+/* Standard laptop screens */
+@media (min-width: 1024px) and (max-width: 1366px) {}
+
+/* Larger laptop screens and desktops */
+@media (min-width: 1367px) {}

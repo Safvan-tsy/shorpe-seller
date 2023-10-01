@@ -3,7 +3,7 @@ import useDocumentTitle from '../hooks/useDocumentTitle';
 
 
 const NotFoundScreen = () => {
-  useDocumentTitle('Not found', false);
+  useDocumentTitle('404', false);
   return (
     <NotFound />
   )
