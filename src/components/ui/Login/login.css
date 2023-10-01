@@ -44,7 +44,7 @@
     color: var(--defaulttext);
     background-color: var(--notfound_light);
     box-shadow: inset 2px 5px 10px rgb(5 5 5 / 19%);
-    ;
+    
 }
 
 .input-icon {

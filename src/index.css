@@ -9,6 +9,9 @@
   --logo_color1:#78c4ed;
   --logo_color2:#d6d2d2;
 
+  --label_color:rgba(0, 0, 0, 0.6);
+  --img_list_border:rgb(40 44 52 / 31%);
+
   --notfound_fill:#262626;
   --notfound_light:rgb(255, 255, 255);
 
@@ -55,6 +58,9 @@
 
   --logo_color1:#1a476038;
   --logo_color2:#d6d2d2;
+
+  --label_color:rgba(255, 255, 255, 0.6);
+  --img_list_border:rgb(25 26 29 / 43%);
 
   --defaulttext:#ffff;
   --defaultfocus:rgba(10, 10, 10, 0.196);
