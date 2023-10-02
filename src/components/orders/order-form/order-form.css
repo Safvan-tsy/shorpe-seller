@@ -1,0 +1,71 @@
+.order-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: var(--body_background);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.items {
+  width: fit-content;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background: var(--order_item_background);
+  margin-top: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.items__title {
+  font-weight: 500;
+  color: var(--defaulttext);
+}
+
+.btn-div {
+  margin-top: 0.3rem;
+}
+
+td .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  color: var(--defaulttext);
+}
+
+td .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root {
+  color: var(--label_color);
+}
+
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  background-color: var(--notfound_light) !important;
+}
+
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  color: var(--label_color) !important;
+}
+
+.item-td {
+  display: flex;
+  justify-content: center;
+}
+
+/* Mobile Devices */
+@media (max-width: 767px) {}
+
+/* small Mobile Devices */
+@media (max-width: 420px) {}
+
+@media (max-width: 370px) {}
+
+/* Portrait orientation tablets */
+@media (min-width: 768px) and (max-width: 1023px) {}
+
+/* Standard laptop screens */
+@media (min-width: 1024px) and (max-width: 1366px) {}
+
+/* Larger laptop screens and desktops */
+@media (min-width: 1367px) {}
