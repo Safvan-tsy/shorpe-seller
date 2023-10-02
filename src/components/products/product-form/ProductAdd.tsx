@@ -1,4 +1,12 @@
-import { FormControlLabel, Radio, RadioGroup, TextField, FormLabel, ImageListItem, ImageList } from '@mui/material';
+import {
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+  FormLabel,
+  ImageListItem,
+  ImageList
+} from '@mui/material';
 import './product-form.css'
 import UploadSvg from "./Upload.svg?react";
 

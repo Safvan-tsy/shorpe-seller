@@ -2,7 +2,7 @@ import ProductAdd from "../../components/products/product-form/ProductAdd";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const AddProductScreen = () => {
-  useDocumentTitle('Add Product|Shorpe!', false);
+  useDocumentTitle('Add Product | Shorpe!', false);
 
   return (
     <div className="container">

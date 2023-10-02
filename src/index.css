@@ -6,26 +6,27 @@
   --body_background: rgb(240, 245, 255);
   --body_color: black;
 
-  --logo_color1:#78c4ed;
-  --logo_color2:#d6d2d2;
+  --logo_color1: #78c4ed;
+  --logo_color2: #d6d2d2;
 
-  --label_color:rgba(0, 0, 0, 0.6);
-  --img_list_border:rgb(40 44 52 / 31%);
+  --label_color: rgba(0, 0, 0, 0.6);
+  --img_list_border: rgb(40 44 52 / 31%);
 
-  --notfound_fill:#262626;
-  --notfound_light:rgb(255, 255, 255);
+  --notfound_fill: #262626;
+  --notfound_light: rgb(255, 255, 255);
 
-  --defaulttext:#282c34;
-  --defaultfocus:rgb(240, 245, 255);
+  --defaulttext: #282c34;
+  --defaultfocus: rgb(240, 245, 255);
 
-  --formtext:black;
+  --formtext: black;
+  --order_item_background: #c9eaf1;
 
-  --defaultbg_color:#fff;
-  --lightbg_color:rgb(245 246 247);
-  --btnfill:#296d90;
-  --btnborder:#fff;
-  --boxshadow:rgb(0 0 0 / 15%);
-  --bgalternative:#515151;
+  --defaultbg_color: #fff;
+  --lightbg_color: rgb(245 246 247);
+  --btnfill: #296d90;
+  --btnborder: #fff;
+  --boxshadow: rgb(0 0 0 / 15%);
+  --bgalternative: #515151;
 
 
   font-synthesis: none;
@@ -37,12 +38,12 @@
 
 /* Scroll Bar */
 ::-webkit-scrollbar {
-  width: 0.3rem; 
+  width: 0.3rem;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 6px; 
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -53,30 +54,32 @@
   --body_background: #282c34;
   --body_color: white;
 
-  --notfound_fill:#fff;
-  --notfound_light:#262626;
+  --notfound_fill: #fff;
+  --notfound_light: #262626;
 
-  --logo_color1:#1a476038;
-  --logo_color2:#d6d2d2;
+  --logo_color1: #1a476038;
+  --logo_color2: #d6d2d2;
 
-  --label_color:rgba(255, 255, 255, 0.6);
-  --img_list_border:rgb(25 26 29 / 43%);
+  --label_color: rgba(255, 255, 255, 0.6);
+  --img_list_border: rgb(25 26 29 / 43%);
 
-  --defaulttext:#ffff;
-  --defaultfocus:rgba(10, 10, 10, 0.196);
-  --formtext:#ffff;
+  --defaulttext: #ffff;
+  --defaultfocus: rgba(10, 10, 10, 0.196);
 
-  --defaultbg_color:#000000;
-  --lightbg_color:rgb(245 246 247);
-  --btnfill:#032132;
-  --btnborder:#fff;
-  --boxshadow:rgba(255, 255, 255, 0.15);
-  --bgalternative:#515151;
+  --formtext: #ffff;
+  --order_item_background: #273045;
+
+  --defaultbg_color: #000000;
+  --lightbg_color: rgb(245 246 247);
+  --btnfill: #032132;
+  --btnborder: #fff;
+  --boxshadow: rgba(255, 255, 255, 0.15);
+  --bgalternative: #515151;
 }
 
 * {
   transition: all 0.3 ease-in-out;
-} 
+}
 
 body {
   margin: 0;
@@ -84,8 +87,8 @@ body {
   min-height: 100vh;
   background-color: var(--body_background);
   color: var(--body_color);
-  scrollbar-width: thin; 
-  scrollbar-color: #888 #fff; 
+  scrollbar-width: thin;
+  scrollbar-color: #888 #fff;
 }
 
 .container {
@@ -95,20 +98,21 @@ body {
   background-color: var(--notfound_light);
   padding: 1rem;
   box-shadow: 0 0.5rem 1rem var(--boxshadow);
-  overflow-x:auto;
+  overflow-x: auto;
   border-radius: 1rem;
 }
 
+a {
+  text-decoration: none;
+}
 
 /* Mobile Devices */
-@media (max-width: 767px) {
-
-}
+@media (max-width: 767px) {}
 
 /* small Mobile Devices */
 @media (max-width: 370px) {
   .container {
-      max-width: 14rem;
+    max-width: 14rem;
 
   }
 }
@@ -116,7 +120,7 @@ body {
 /* Portrait orientation tablets */
 @media (min-width: 768px) and (max-width: 1023px) {
   .container {
-      width: 41rem;
+    width: 41rem;
   }
 }
 
@@ -126,13 +130,13 @@ body {
 /* Standard laptop screens */
 @media (min-width: 1024px) and (max-width: 1366px) {
   .container {
-      width: 70rem;
+    width: 70rem;
   }
 }
 
 /* Larger laptop screens and desktops */
 @media (min-width: 1367px) {
   .container {
-      min-width: 78rem;
+    min-width: 78rem;
   }
 }
