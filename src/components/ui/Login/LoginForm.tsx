@@ -65,7 +65,7 @@ const LoginForm = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <div className="btn">
+                <div className="login-btn-div">
                     {
                     isLoading ? <Loader/> 
                     : <button type='submit' className='btn'>Submit</button>

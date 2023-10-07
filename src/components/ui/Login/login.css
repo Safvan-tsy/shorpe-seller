@@ -44,7 +44,7 @@
     color: var(--defaulttext);
     background-color: var(--notfound_light);
     box-shadow: inset 2px 5px 10px rgb(5 5 5 / 19%);
-    
+
 }
 
 .input-icon {
@@ -65,9 +65,12 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin: 2em 0 2em 0;
+    margin: 0;
 }
 
+.login-btn-div {
+    margin: auto;
+}
 
 .btn {
     background: var(--logo_color1);
@@ -96,6 +99,7 @@ button:active {
     .form-container {
         padding: 0.9rem;
     }
+
     .form:hover {
         border: none;
     }
@@ -120,6 +124,7 @@ button:active {
     .form {
         width: 30rem;
     }
+
     .form-container {
         padding: 2.5rem;
     }
@@ -130,6 +135,7 @@ button:active {
     .form {
         width: 35rem;
     }
+
     .form-container {
         padding: 3rem;
     }
