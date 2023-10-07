@@ -4,9 +4,9 @@ export interface User {
     email:string;
     isAdmin:boolean;
     isSeller:boolean;
+    seller:Seller;
     password?:string;
     confirmPassword?:string;
-    seller?:Seller;
 }
 
 export interface Seller {
