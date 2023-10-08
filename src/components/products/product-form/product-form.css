@@ -36,6 +36,7 @@
 }
 
 .product-form-field label,
+.product-form-field .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root,
 .product-form-input-field label {
     color: var(--label_color);
 }
