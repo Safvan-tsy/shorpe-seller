@@ -1,10 +1,19 @@
+import { useState } from 'react'
 import './productlist.css'
 import { Pagination } from '@mui/material'
 import { FiEdit } from 'react-icons/fi'
 import { LuView } from 'react-icons/lu'
 import { Link } from 'react-router-dom'
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import ProductView from '../product-form/ProductView'
 
 const ProductList = () => {
+
+  const [open, setOpen] = useState(false);
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
   return (
     <div className='product-list-component'>
       <Link to='/products/add'>
@@ -29,9 +38,10 @@ const ProductList = () => {
               <Link to='/products/edit/:id'>
                 <button className='icon-btn'><FiEdit /></button>
               </Link>
-              <Link to='/products/view/:id'>
-                <button className='icon-btn'><LuView /></button>
-              </Link>
+              <button className='icon-btn' onClick={onOpenModal}><LuView /></button>
+              <Modal open={open} onClose={onCloseModal} center>
+                <ProductView/>
+              </Modal>
             </td>
           </tr>
         </tbody>
