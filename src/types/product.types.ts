@@ -58,3 +58,17 @@ export interface ProductAddForm {
     districts?: any;
     pincodes?: any;
 }
+
+export interface GetProductListRes {
+    products: ProductType[],
+    totalPages: number,
+    currentPage: number,
+    productsCount: number
+}
+
+export interface GetOrderListRes {
+   orders: orderType[],
+    totalPages: number,
+    currentPage: number,
+    productsCount: number
+}
