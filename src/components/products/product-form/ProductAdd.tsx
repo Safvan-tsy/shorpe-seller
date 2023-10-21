@@ -16,12 +16,12 @@ import {
   Checkbox,
   Alert
 } from '@mui/material';
-import { useAutocomplete, } from '@mui/base/useAutocomplete';
-import CheckIcon from '@mui/icons-material/Check';
+import { useAutocomplete, } from '@mui/base/useAutocomplete'
+import CheckIcon from '@mui/icons-material/Check'
 import { pincodeList } from '../../../assets/klPincodes'
 import './product-form.css'
-import UploadSvg from "./Upload.svg?react";
-import React, { useState } from 'react';
+import UploadSvg from "./Upload.svg?react"
+import React, { useState } from 'react'
 import {
   pinOptionType,
   InputWrapper,
