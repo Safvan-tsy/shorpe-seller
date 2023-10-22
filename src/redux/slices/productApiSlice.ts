@@ -23,10 +23,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 },
             }),
         }),
-        getProducts: builder.query<GetProductListRes, { page: string; keyword: string }>({
-            query: ({ page, keyword }) => ({
+        getProducts: builder.query<GetProductListRes, { page: string; limit: string, token:string }>({
+            query: ({ page, limit, token }) => ({
                 url: `${SELLERS_URL}/products/`,
-                params: { page, keyword },
+                params: { page, limit },
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             }),
             keepUnusedDataFor: 5,
             providesTags: ['Product'],

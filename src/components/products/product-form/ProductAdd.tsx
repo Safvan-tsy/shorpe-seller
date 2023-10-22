@@ -172,8 +172,6 @@ const ProductAdd = () => {
       } catch (error) {
         toast.error("failed")
       }
-      
-      
     }
   };
 
@@ -376,7 +374,6 @@ const ProductAdd = () => {
             {error && <Alert severity="error">Please fill all the fields correctly</Alert>}
             {createError && <Alert severity="error">Failed to create product</Alert>}
             {loadingUpload ?( <Loader /> ): loadingCreate? <Loader/>: (<button className='btn'>Submit</button>)}
-
           </div>
         </form>
       </div>

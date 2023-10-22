@@ -3,7 +3,6 @@ import { User } from "./seller.types";
 export interface ProductType {
     _id: string;
     name: string;
-    image: string;
     price: number;
     rating: number;
     description: string;
@@ -11,6 +10,10 @@ export interface ProductType {
     countInStock: number;
     brand: string;
     category: string;
+    status: string;
+    image:string[];
+    districts?: any;
+    pincodes?: any;
 }
 
 
