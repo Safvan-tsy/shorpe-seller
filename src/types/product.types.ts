@@ -53,8 +53,10 @@ export interface ProductAddForm {
     brand: string;
     category: string;
     description: string;
+    delivery:string;
     countInStock: number;
-    productStatus: string;
+    status: string;
+    image:string[];
     districts?: any;
     pincodes?: any;
 }

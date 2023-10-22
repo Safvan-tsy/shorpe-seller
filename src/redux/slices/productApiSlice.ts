@@ -1,14 +1,14 @@
-import { GetProductListRes, ProductType } from "../../types/product.types";
+import { GetProductListRes, ProductAddForm, ProductType } from "../../types/product.types";
 import { SELLERS_URL } from "../../utils/constants";
 import { apiSlice } from "./apiSlice";
 
 export const usersApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        imageUpload: builder.mutation<{ image: string }, { formData: FormData; token: string }>({
-            query: ({ formData, token }) => ({
+        imageUpload: builder.mutation<{ image: string }, { imgData: FormData; token: string }>({
+            query: ({ imgData, token }) => ({
                 url: `${SELLERS_URL}/products/image`,
                 method: 'POST',
-                body: formData,
+                body: imgData,
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -37,11 +37,11 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             }),
             providesTags: ['Product'],
         }),
-        createProduct: builder.mutation<{ product: ProductType }, { data: any; token: string }>({
-            query: ({ data, token }) => ({
+        createProduct: builder.mutation<{ status:String, product: ProductType }, { formsData: ProductAddForm; token: string }>({
+            query: ({ formsData, token }) => ({
                 url: `${SELLERS_URL}/products/`,
                 method: 'POST',
-                body: data,
+                body: formsData,
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

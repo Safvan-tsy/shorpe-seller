@@ -22,6 +22,7 @@ import { pincodeList } from '../../../assets/klPincodes'
 import './product-form.css'
 import UploadSvg from "./Upload.svg?react"
 import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom';
 import {
   pinOptionType,
   InputWrapper,
@@ -31,6 +32,11 @@ import {
   StyledTag
 } from './Pincode';
 import { ProductAddForm } from '../../../types/product.types';
+import { useCreateProductMutation, useImageUploadMutation } from '../../../redux/slices/productApiSlice';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
+import { toast } from 'react-toastify';
+import Loader from '../../ui/loader/Loader';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -61,6 +67,9 @@ const districtlist = [
 ]
 
 const ProductAdd = () => {
+  const navigate = useNavigate();
+
+  const [itemData, setItemData] = useState([]);
   const [districts, setDistricts] = React.useState<string[]>([]);
   const [name, setName] = useState('')
   const [brand, setBrand] = useState('')
@@ -71,14 +80,10 @@ const ProductAdd = () => {
   const [error, setError] = useState(false);
   const [productStatus, setProductStatus] = useState("published");
   const [delivery, setDelivery] = useState("state");
-
-
-  const itemData = [
-    { img: "https://res.cloudinary.com/unfoldcloud/image/upload/v1683805642/blogs/blog-63f2fa7a234c1ee0220836ff-1683805639721-cover.jpg", title: "title" },
-    { img: "https://res.cloudinary.com/unfoldcloud/image/upload/v1684737834/blogs/blog-63f2fa7a234c1ee0220836ff-1684737832201-cover.jpg", title: "title" },
-    { img: "https://res.cloudinary.com/unfoldcloud/image/upload/v1684737248/blogs/blog-63f2fa7a234c1ee0220836ff-1684737246148-cover.jpg", title: "title" },
-  ]
-
+  const token = useSelector((state: RootState) => state.auth.token);
+  const [uploadProdImage, { isLoading: loadingUpload }] = useImageUploadMutation()
+  const [createProduct, {error:createError, isLoading:loadingCreate}] = useCreateProductMutation()
+  
   const handleDistrictChange = (event: SelectChangeEvent<typeof districts>) => {
     const {
       target: { value },
@@ -136,32 +141,56 @@ const ProductAdd = () => {
   };
 
 
-  const submitHandler = (e) => {
+  const submitHandler = async(e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      let formData: ProductAddForm = {
+      let formsData: ProductAddForm = {
         name,
         price: parseFloat(price),
         brand,
         category,
         description,
+        delivery,
         countInStock: parseInt(countInStock),
-        productStatus,
+        status:productStatus,
+        image:itemData
       };
 
       if (delivery === "district") {
-        formData.districts = districts;
+        formsData.districts = districts;
       } else if (delivery === "pincodes") {
-        formData.pincodes = value;
+        formsData.pincodes = value;
       }
 
-      console.log(formData)
-
-
+      try {
+        const createRes = await createProduct({ formsData, token })
+        if ('data' in createRes && createRes.data.status === "success") {
+          toast.success('Update success');
+          navigate('/products');
+        }
+      } catch (error) {
+        toast.error("failed")
+      }
+      
+      
     }
   };
 
+
+  const uploadFileHandler = async (e) => {
+    const imgData = new FormData();
+    imgData.append('imageCover', e.target.files[0])
+    try {
+      const res = await uploadProdImage({ imgData, token }).unwrap()
+      setItemData([...itemData, res.image]);
+      toast.success('success')
+
+    } catch (error) {
+      toast.error('error?.data?.message || error.error');
+    }
+
+  }
   return (
     <>
       <div className='product-form-container'>
@@ -251,27 +280,34 @@ const ProductAdd = () => {
               <FormLabel>Upload Product Images</FormLabel>
               <div className="image-upload-container">
                 <div className="upload-input-div">
-                  <input className="upload-input" name="file" type="file" />
+                  <input
+                    className="upload-input"
+                    name="file"
+                    type="file"
+                    onChange={uploadFileHandler}
+                  />
                   <UploadSvg />
                 </div>
               </div>
             </div>
-            <div className='product-form-field '>
-              <div className='img-list'>
-                <ImageList variant="masonry" cols={3} gap={8}>
-                  {itemData.map((item) => (
-                    <ImageListItem key={item.img}>
-                      <img
-                        srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                        src={`${item.img}?w=248&fit=crop&auto=format`}
-                        alt={item.title}
-                        loading="lazy"
-                      />
-                    </ImageListItem>
-                  ))}
-                </ImageList>
+            {itemData.length > 0 && (
+              <div className='product-form-field'>
+                <div className='img-list'>
+                  <ImageList variant="masonry" cols={3} gap={8}>
+                    {itemData.map((img) => (
+                      <ImageListItem key={img}>
+                        <img
+                          srcSet={`${img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                          src={`${img}?w=248&fit=crop&auto=format`}
+                          alt="Image"
+                          loading="lazy"
+                        />
+                      </ImageListItem>
+                    ))}
+                  </ImageList>
+                </div>
               </div>
-            </div>
+            )}
             <div className='product-form-field'>
               <FormLabel id="demo-row-radio-buttons-group-label">Delivery Possibility</FormLabel>
               <RadioGroup
@@ -338,7 +374,9 @@ const ProductAdd = () => {
           </div>
           <div className='form-foot'>
             {error && <Alert severity="error">Please fill all the fields correctly</Alert>}
-            <button className='btn'>Submit</button>
+            {createError && <Alert severity="error">Failed to create product</Alert>}
+            {loadingUpload ?( <Loader /> ): loadingCreate? <Loader/>: (<button className='btn'>Submit</button>)}
+
           </div>
         </form>
       </div>
