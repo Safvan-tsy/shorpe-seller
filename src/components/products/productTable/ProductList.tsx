@@ -12,31 +12,33 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { useDeleteProductMutation, useGetProductsQuery } from '../../../redux/slices/productApiSlice';
 import Loader from '../../ui/loader/Loader';
+import DeleteWarning from '../../ui/warning/DeleteWarning';
 
 const ProductList = () => {
   const navigate = useNavigate();
 
-  const [open, setOpen] = useState(false);
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
+  const [productModalStates, setProductModalStates] = useState({});
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
 
   const token = useSelector((state: RootState) => state.auth.token);
-  const { page, limit } = useParams<{ page: string, limit: string }>()
+  const { page, limit } = useParams<{ page: string, limit: string }>();
 
-  const { data: res, isLoading, error, refetch } = useGetProductsQuery({ page: page ?? '1', limit: limit ?? '5', token })
-  const [deleteProduct, { isLoading: loadingDelete }] = useDeleteProductMutation()
+  const { data: res, isLoading, error, refetch } = useGetProductsQuery({ page: page ?? '1', limit: limit ?? '5', token });
+  const [deleteProduct, { isLoading: loadingDelete }] = useDeleteProductMutation();
 
   const deleteHandler = async (prodId: string) => {
-    if (window.confirm('Are you sure')) {
-      try {
-        await deleteProduct({ prodId, token })
-        toast.success('Deleted')
-        refetch()
-      } catch (error) {
-        toast.error('error?.data?.message || error.error')
-      }
+    try {
+      await deleteProduct({ prodId, token });
+      toast.success('Deleted');
+      refetch();
+      setDeleteModalOpen(false);
+    } catch (error) {
+      toast.error('error?.data?.message || error.error');
     }
-  }
+  };
 
 
   const handlePageChange = (_e: React.ChangeEvent<unknown>, value: number) => {
@@ -44,11 +46,20 @@ const ProductList = () => {
     const newLimit = limit ?? '5';
     navigate(`/products/${newPage}/${newLimit}`);
   }
+  const openProductModal = (product) => {
+    setSelectedProduct(product);
+    setProductModalStates({ ...productModalStates, [product._id]: true });
+  };
+
+  const closeProductModal = (productId) => {
+    setSelectedProduct(null);
+    setProductModalStates({ ...productModalStates, [productId]: false });
+  };
 
   return (
     <div className='product-list-component'>
       {error && <Alert severity="error">Failed to Fetch Products</Alert>}
-      {isLoading ? (<Loader />) : loadingDelete ? <Loader /> : (
+      {isLoading || loadingDelete ? <Loader /> : (
         <Link to='/products/add'>
           <button className='icon-btn'> Add Product <FaEdit /></button>
         </Link>
@@ -73,17 +84,32 @@ const ProductList = () => {
                 <Link to={`/products/edit/${product._id}`}>
                   <button className='icon-btn'><FaEdit /></button>
                 </Link>
-                <button className='icon-btn' onClick={onOpenModal}><LuView /></button>
-                <button className='icon-btn' onClick={() => deleteHandler(product._id)}><FaTrash /></button>
-                <Modal open={open} onClose={onCloseModal} center>
-                  <ProductView product={product} />
+                <button className="icon-btn" onClick={() => openProductModal(product)}><LuView /></button>
+                <button className='icon-btn' onClick={() => {
+                  setProductToDelete(product);
+                  setDeleteModalOpen(true);
+                }}><FaTrash /></button>
+
+                <Modal open={productModalStates[product._id]} onClose={() => closeProductModal(product._id)} center>
+                  {selectedProduct && <ProductView product={selectedProduct} />}
                 </Modal>
+                <DeleteWarning
+                  isOpen={deleteModalOpen}
+                  onClose={() => setDeleteModalOpen(false)}
+                  productName={productToDelete?.name}
+                  onConfirm={() => deleteHandler(productToDelete?._id)}
+                />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Pagination count={res?.totalPages} page={parseInt(page ?? '1')} onChange={handlePageChange} className='pagination-container' />
+      <Pagination
+        count={res?.totalPages}
+        page={parseInt(page ?? '1')}
+        onChange={handlePageChange}
+        className='pagination-container'
+      />
     </div>
   )
 }
