@@ -3,7 +3,6 @@ import { User } from "./seller.types";
 export interface ProductType {
     _id: string;
     name: string;
-    image: string;
     price: number;
     rating: number;
     description: string;
@@ -11,6 +10,10 @@ export interface ProductType {
     countInStock: number;
     brand: string;
     category: string;
+    status: string;
+    image:string[];
+    districts?: any;
+    pincodes?: any;
 }
 
 
@@ -53,8 +56,24 @@ export interface ProductAddForm {
     brand: string;
     category: string;
     description: string;
+    delivery:string;
     countInStock: number;
-    productStatus: string;
+    status: string;
+    image:string[];
     districts?: any;
     pincodes?: any;
+}
+
+export interface GetProductListRes {
+    products: ProductType[],
+    totalPages: number,
+    currentPage: number,
+    productsCount: number
+}
+
+export interface GetOrderListRes {
+   orders: orderType[],
+    totalPages: number,
+    currentPage: number,
+    productsCount: number
 }
