@@ -61,6 +61,7 @@ export interface ProductAddForm {
     countInStock: number;
     status: string;
     image:string[];
+    prodId?:string;
     districts?: any;
     pincodes?: any;
 }
