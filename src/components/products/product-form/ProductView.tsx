@@ -5,109 +5,155 @@ import {
   TextField,
   FormLabel,
   ImageListItem,
-  ImageList
+  ImageList,
 } from '@mui/material';
 import './product-form.css'
+import { ProductType } from '../../../types/product.types';
 
-const ProductView = () => {
-
-  const itemData = [
-    { img: "https://res.cloudinary.com/unfoldcloud/image/upload/v1683805642/blogs/blog-63f2fa7a234c1ee0220836ff-1683805639721-cover.jpg", title: "title" },
-    { img: "https://res.cloudinary.com/unfoldcloud/image/upload/v1684737834/blogs/blog-63f2fa7a234c1ee0220836ff-1684737832201-cover.jpg", title: "title" },
-    { img: "https://res.cloudinary.com/unfoldcloud/image/upload/v1684737248/blogs/blog-63f2fa7a234c1ee0220836ff-1684737246148-cover.jpg", title: "title" },
-  ]
+const ProductView = (props) => {
+  const product:ProductType = props.product
 
   return (
     <>
       <div className='product-form-container'>
-        <h3>EDIT PRODUCT</h3>
+        <h3>{product.name}</h3>
         <form className='product-form'>
           <div className='form-input'>
             <div className='product-form-field'>
               <TextField
+                value={product.name}
                 id="outlined-textarea"
                 label="Name"
                 placeholder="Enter Product Name"
-                value={"Example_Name"}
+                multiline
                 className='product-form-input-field '
                 disabled
               />
             </div>
             <div className='product-form-field'>
               <TextField
+                value={product.price}
                 id="outlined-textarea"
                 label="Price"
                 placeholder="Price of Product"
-                value={255}
+                multiline
                 className='product-form-input-field '
                 disabled
               />
             </div>
             <div className='product-form-field'>
               <TextField
+                value={product.brand}
                 id="outlined-textarea"
                 label="Brand"
                 placeholder="Brand Name"
-                value={"Example_Brand"}
+                multiline
                 className='product-form-input-field '
                 disabled
               />
             </div>
             <div className='product-form-field'>
               <TextField
+                value={product.countInStock}
                 id="outlined-textarea"
                 label="Stock Count"
                 placeholder="Count in Stock"
-                value={100}
+                multiline
                 className='product-form-input-field '
                 disabled
               />
             </div>
             <div className='product-form-field'>
               <TextField
+                value={product.category}
                 id="outlined-textarea"
                 label="Category"
                 placeholder="Product Category"
-                value={"Example_Category"}
+                multiline
                 className='product-form-input-field '
                 disabled
               />
             </div>
             <div className='product-form-field'>
-              <FormLabel>Product Status</FormLabel>
-              <RadioGroup row name="row-radio-buttons-group">
-                <FormControlLabel value="published" control={<Radio />} label="Published" />
+              <FormLabel id="demo-row-radio-buttons-group-label">Status</FormLabel>
+              <RadioGroup
+                row
+                name="row-radio-buttons-group"
+                value={product.status}
+              >
+                <FormControlLabel value={product.status} control={<Radio />} label={product.status} />
               </RadioGroup>
             </div>
             <div className='product-form-field description'>
               <TextField
+                value={product.description}
                 id="outlined-textarea"
                 label="Description"
                 placeholder="Write a Description"
-                value={"Example_description"}
+                multiline
                 className='product-form-input-field '
                 disabled
               />
             </div>
-            <div className='product-form-field '>
-              <div className='img-list'>
-                <ImageList variant="masonry" cols={3} gap={8}>
-                  {itemData.map((item) => (
-                    <ImageListItem key={item.img}>
-                      <img
-                        srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                        src={`${item.img}?w=248&fit=crop&auto=format`}
-                        alt={item.title}
-                        loading="lazy"
-                      />
-                    </ImageListItem>
-                  ))}
-                </ImageList>
+            {product?.image?.length > 0 && (
+              <div className='product-form-field'>
+                <div className='img-list'>
+                  <ImageList variant="masonry" cols={3} gap={8}>
+                    {product.image.map((img) => (
+                      <ImageListItem key={img}>
+                        <img
+                          srcSet={`${img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                          src={`${img}?w=248&fit=crop&auto=format`}
+                          alt="Image"
+                          loading="lazy"
+                        />
+                      </ImageListItem>
+                    ))}
+                  </ImageList>
+                </div>
               </div>
+            )}
+            <div className='product-form-field'>
+              <FormLabel id="demo-row-radio-buttons-group-label">Delivery Possibility</FormLabel>
+              <RadioGroup
+                row
+                name="row-radio-buttons-group"
+                value={product.delivery}
+              >
+                <FormControlLabel value={product.delivery} control={<Radio />} label={product.delivery} />
+              </RadioGroup>
             </div>
+            {product.delivery === "district" && (
+              <div className='product-form-field'>
+                 <TextField
+                value={product.districts}
+                id="outlined-textarea"
+                label="Districts"
+                multiline
+                className='product-form-input-field '
+                disabled
+              />
+              </div>
+            )}
+            {product.delivery === "pincodes" && (
+              <div className='product-form-field'>
+                 <TextField
+                value={product.pincodes}
+                id="outlined-textarea"
+                label="Pincodes"
+                multiline
+                className='product-form-input-field '
+                disabled
+              />
+              </div>
+            )}
           </div>
+          {/* <div className='form-foot'>
+            {error && <Alert severity="error">Please fill all the fields correctly</Alert>}
+          </div> */}
         </form>
       </div>
+
     </>
   )
 }

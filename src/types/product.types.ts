@@ -12,6 +12,7 @@ export interface ProductType {
     category: string;
     status: string;
     image:string[];
+    delivery:string;
     districts?: any;
     pincodes?: any;
 }

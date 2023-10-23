@@ -166,7 +166,7 @@ const ProductAdd = () => {
       try {
         const createRes = await createProduct({ formsData, token })
         if ('data' in createRes && createRes.data.status === "success") {
-          toast.success('Update success');
+          toast.success('Success');
           navigate('/products');
         }
       } catch (error) {
