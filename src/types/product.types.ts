@@ -12,6 +12,7 @@ export interface ProductType {
     category: string;
     status: string;
     image:string[];
+    delivery:string;
     districts?: any;
     pincodes?: any;
 }
@@ -60,6 +61,7 @@ export interface ProductAddForm {
     countInStock: number;
     status: string;
     image:string[];
+    prodId?:string;
     districts?: any;
     pincodes?: any;
 }

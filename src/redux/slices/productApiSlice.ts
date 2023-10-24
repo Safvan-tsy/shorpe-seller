@@ -34,9 +34,12 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             keepUnusedDataFor: 5,
             providesTags: ['Product'],
         }),
-        getProductDetail: builder.query<{ product: ProductType }, string>({
-            query: (productId) => ({
+        getProductDetail: builder.query<{ product: ProductType },{ productId: string, token:string }>({
+            query: ({productId,token}) => ({
                 url: `${SELLERS_URL}/products/${productId}`,
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             }),
             providesTags: ['Product'],
         }),
