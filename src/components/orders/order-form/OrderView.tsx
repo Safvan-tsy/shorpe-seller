@@ -27,9 +27,6 @@ const OrderView = () => {
                       <div className="items__title">lorem ipsum dolor sit amet</div>
                     </div>
                   </Link>
-                  <div className="items">
-                    <div className="items__title">lorem ipsum dolor sit amet</div>
-                  </div>
                 </td>
                 <td data-label="Address">Manikulath(H) Parappanpoyil(PO)</td>
                 <td data-label="Date">2023-07-08</td>

@@ -31,8 +31,12 @@ import {
   Root,
   StyledTag
 } from './Pincode';
-import { ProductAddForm} from '../../../types/product.types';
-import { useGetProductDetailQuery, useImageUploadMutation, useUpdateProductMutation } from '../../../redux/slices/productApiSlice';
+import { ProductAddForm } from '../../../types/product.types';
+import {
+  useGetProductDetailQuery,
+  useImageUploadMutation,
+  useUpdateProductMutation
+} from '../../../redux/slices/productApiSlice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { toast } from 'react-toastify';
@@ -78,6 +82,7 @@ const ProductEdit = () => {
   const [description, setDescription] = useState('')
   const [countInStock, setCountInStock] = useState('')
   const [price, setPrice] = useState('')
+  const [shippingPrice, setShippingPrice] = useState('')
   const [error, setError] = useState(false);
   const [productStatus, setProductStatus] = useState("published");
   const [delivery, setDelivery] = useState("state");
@@ -87,7 +92,7 @@ const ProductEdit = () => {
   const { data: res, isLoading, error: fetchError, refetch } = useGetProductDetailQuery({ productId: id, token })
   const [uploadProdImage, { isLoading: loadingUpload }] = useImageUploadMutation()
   const [updateProduct, { error: updateError, isLoading: loadingUpdate }] = useUpdateProductMutation()
-
+console.log(res.product)
   const handleDistrictChange = (event: SelectChangeEvent<typeof districts>) => {
     const {
       target: { value },
@@ -101,6 +106,7 @@ const ProductEdit = () => {
     if (res) {
       setName(res.product.name);
       setPrice(res.product.price.toString());
+      setPrice(res.product.shippingPrice.toString());
       setBrand(res.product.brand);
       setCategory(res.product.category);
       setCountInStock(res.product.countInStock.toString());
@@ -126,7 +132,7 @@ const ProductEdit = () => {
     setAnchorEl,
   } = useAutocomplete({
     id: 'customized-hook-demo',
-    defaultValue: [pincodeList[1]],
+    defaultValue: [pincodeList[0]],
     multiple: true,
     options: pincodeList,
     getOptionLabel: (option) => option.title,
@@ -135,11 +141,13 @@ const ProductEdit = () => {
 
   const validateForm = () => {
     const parsedPrice = parseFloat(price);
+    const parsedShippingPrice = parseFloat(shippingPrice);
     const parsedCountInStock = parseInt(countInStock);
 
     if (
       !name ||
       isNaN(parsedPrice) ||
+      isNaN(parsedShippingPrice) ||
       !brand ||
       !category ||
       !description ||
@@ -168,6 +176,7 @@ const ProductEdit = () => {
       let formsData: ProductAddForm = {
         name,
         price: parseFloat(price),
+        shippingPrice: parseFloat(shippingPrice),
         brand,
         category,
         description,
@@ -212,8 +221,8 @@ const ProductEdit = () => {
   return (
     <>
       {isLoading ? (
-      <Loader />
-      ) : 
+        <Loader />
+      ) :
       fetchError? (<Alert severity="error">Failed to Fetch Product details</Alert>
       ):(
         <div className='product-form-container'>
@@ -242,6 +251,17 @@ const ProductEdit = () => {
                   className='product-form-input-field '
                 />
               </div>
+              <div className='product-form-field'>
+                <TextField
+                    value={shippingPrice}
+                    onChange={(e) => setShippingPrice(e.target.value)}
+                    id="outlined-textarea"
+                    label="Shipping Price"
+                    placeholder="Shipping Price of Product"
+                    multiline
+                    className='product-form-input-field '
+                  />
+                </div>
               <div className='product-form-field'>
                 <TextField
                   value={brand}

@@ -22,7 +22,7 @@ import { pincodeList } from '../../../assets/klPincodes'
 import './product-form.css'
 import UploadSvg from "./Upload.svg?react"
 import React, { useState } from 'react'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   pinOptionType,
   InputWrapper,
@@ -77,13 +77,14 @@ const ProductAdd = () => {
   const [description, setDescription] = useState('')
   const [countInStock, setCountInStock] = useState('')
   const [price, setPrice] = useState('')
+  const [shippingPrice, setShippingPrice] = useState('')
   const [error, setError] = useState(false);
   const [productStatus, setProductStatus] = useState("published");
   const [delivery, setDelivery] = useState("state");
   const token = useSelector((state: RootState) => state.auth.token);
   const [uploadProdImage, { isLoading: loadingUpload }] = useImageUploadMutation()
-  const [createProduct, {error:createError, isLoading:loadingCreate}] = useCreateProductMutation()
-  
+  const [createProduct, { error: createError, isLoading: loadingCreate }] = useCreateProductMutation()
+
   const handleDistrictChange = (event: SelectChangeEvent<typeof districts>) => {
     const {
       target: { value },
@@ -115,11 +116,13 @@ const ProductAdd = () => {
 
   const validateForm = () => {
     const parsedPrice = parseFloat(price);
+    const parsedShippingPrice = parseFloat(shippingPrice);
     const parsedCountInStock = parseInt(countInStock);
 
     if (
       !name ||
       isNaN(parsedPrice) || // Check if price is NaN
+      isNaN(parsedShippingPrice) ||
       !brand ||
       !category ||
       !description ||
@@ -141,20 +144,21 @@ const ProductAdd = () => {
   };
 
 
-  const submitHandler = async(e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
       let formsData: ProductAddForm = {
         name,
         price: parseFloat(price),
+        shippingPrice: parseFloat(shippingPrice),
         brand,
         category,
         description,
         delivery,
         countInStock: parseInt(countInStock),
-        status:productStatus,
-        image:itemData
+        status: productStatus,
+        image: itemData
       };
 
       if (delivery === "district") {
@@ -213,6 +217,17 @@ const ProductAdd = () => {
                 id="outlined-textarea"
                 label="Price"
                 placeholder="Price of Product"
+                multiline
+                className='product-form-input-field '
+              />
+            </div>
+            <div className='product-form-field'>
+              <TextField
+                value={shippingPrice}
+                onChange={(e) => setShippingPrice(e.target.value)}
+                id="outlined-textarea"
+                label="Shipping Price"
+                placeholder="Shipping Price of Product"
                 multiline
                 className='product-form-input-field '
               />
@@ -373,7 +388,7 @@ const ProductAdd = () => {
           <div className='form-foot'>
             {error && <Alert severity="error">Please fill all the fields correctly</Alert>}
             {createError && <Alert severity="error">Failed to create product</Alert>}
-            {loadingUpload ?( <Loader /> ): loadingCreate? <Loader/>: (<button className='btn'>Submit</button>)}
+            {loadingUpload ? (<Loader />) : loadingCreate ? <Loader /> : (<button className='btn'>Submit</button>)}
           </div>
         </form>
       </div>
