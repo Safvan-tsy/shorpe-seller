@@ -43,6 +43,17 @@ const ProductView = (props) => {
             </div>
             <div className='product-form-field'>
               <TextField
+                value={product.shippingPrice}
+                id="outlined-textarea"
+                label="Shipping Price"
+                placeholder="Shipping Price of Product"
+                multiline
+                className='product-form-input-field '
+                disabled
+              />
+            </div>
+            <div className='product-form-field'>
+              <TextField
                 value={product.brand}
                 id="outlined-textarea"
                 label="Brand"

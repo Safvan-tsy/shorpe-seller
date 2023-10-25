@@ -1,22 +1,40 @@
-import { User } from "./seller.types";
 
-export interface orderType { 
-    orderItems: CartItem[]; 
-    shippingAddress: any; 
-    paymentMethod: string; 
-    itemsPrice: string; 
-    shippingPrice: string; 
-    taxPrice: string; 
-    totalPrice: string; 
-    token?: string; 
-    createdAt?:any;
-    _id?:string;
-    product?:string;
-    isDelivered?:boolean; 
-    deliveredAt?:any;
-    user?:User;
-    isPaid?:boolean;
-    paidAt?:any;
+export interface orderType{
+    userId: string;
+    sellerId: string;
+    status: string;
+    statusDescription: string;
+    orderItems: [
+        {
+            name: string;
+            qty: number;
+            image: string;
+            price: number;
+            product: string
+        }
+    ];
+    shippingAddress: {
+        address: string;
+        city: string;
+        postalCode: string;
+        country: string
+    };
+    itemsPrice: number;
+    taxPrice: number;
+    shippingPrice: number;
+    totalPrice: number;
+    paymentMethod?: string;
+    paymentResult?: {
+        id: string;
+        status: string;
+        updateTime: string;
+        email: string
+    };
+    isPaid?: boolean;
+    paidAt?: Date;
+    isDelivered?: boolean;
+    deliveredAt?: Date;
+    otp?: string;
 }
 
 export interface CartItem {

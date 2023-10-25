@@ -4,6 +4,7 @@ export interface ProductType {
     _id: string;
     name: string;
     price: number;
+    shippingPrice:number;
     rating: number;
     description: string;
     numReviews: number;
@@ -60,6 +61,7 @@ export interface ProductAddForm {
     delivery:string;
     countInStock: number;
     status: string;
+    shippingPrice:number;
     image:string[];
     prodId?:string;
     districts?: any;
