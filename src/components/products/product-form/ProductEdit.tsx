@@ -92,7 +92,7 @@ const ProductEdit = () => {
   const { data: res, isLoading, error: fetchError, refetch } = useGetProductDetailQuery({ productId: id, token })
   const [uploadProdImage, { isLoading: loadingUpload }] = useImageUploadMutation()
   const [updateProduct, { error: updateError, isLoading: loadingUpdate }] = useUpdateProductMutation()
-console.log(res.product)
+
   const handleDistrictChange = (event: SelectChangeEvent<typeof districts>) => {
     const {
       target: { value },
@@ -106,7 +106,7 @@ console.log(res.product)
     if (res) {
       setName(res.product.name);
       setPrice(res.product.price.toString());
-      setPrice(res.product.shippingPrice.toString());
+      setShippingPrice(res.product.shippingPrice?.toString());
       setBrand(res.product.brand);
       setCategory(res.product.category);
       setCountInStock(res.product.countInStock.toString());
